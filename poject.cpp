@@ -1,3 +1,6 @@
+
+
+=======
 =======
 #include<cstdio>
 
@@ -95,12 +98,28 @@ int main()
       void circular_llist::create_node(int value)
 
 {
+struct node *temp;
+        void circular_llist::add_begin(int value)
 
-    struct node *temp;
+{
+
+    if (last == NULL)
+
+    {
+
+        cout<<"First Create the list."<<endl;
+
+        return;
+
+    }
 
     temp = new(struct node);
 
     temp->info = value;
+
+    temp->next = last->next;
+
+    last->next = temp;
 
     if (last == NULL)
 
@@ -155,5 +174,6 @@ void circular_llist::display_list()
     }
 
     cout<<s->info<<endl;
+
 
 }
