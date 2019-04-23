@@ -501,70 +501,101 @@ void circular_llist::add_after(int value, int pos)
     cout<<"Element "<<value<<" not found in the list"<<endl;
 
 }
- 
-void circular_llist::sort()
+ #include<cstring>
+#include<conio.h>
 
+using namespace std;
+
+class String
 {
+protected:
+	char str[200];
+public:
+	String(){}
+	String(char* xstr){ strcpy(str, xstr);	}
+        void show() { cout << str << endl; }
+	char* operator+(String);
+	char* operator=(String);
+	char *operator+=(String);
+        int stringlen();
+        int stringsize();
+	void tolower();
+	void toupper();
+};
 
-    struct node *s, *ptr;
+char* String::operator+(String xstr)
+{
+	strcat(str, xstr.str);
+	return str;
+}
+char* String::operator+=(String xstr)
+{
+	strcat(str, xstr.str);
+	return str;
+}
+int String::stringsize()
+{
+	return (strlen(str) + 1);
+}
+char* String::operator=(String xstr)
+{
+	strcpy(str, xstr.str);
+	return str;
+}
+int String::stringlen()
+	{
+		return strlen(str);
+	}
 
-    int temp;
 
-    if (last == NULL)
+void String::tolower()
+{
+	for (int i = 0; str[i] != '\0'; i++)
+		if (isupper(str[i]))
+			str[i] += 32;
+}
+void String::toupper()
+{
+	for (int i = 0; str[i] != '\0'; i++)
+		if (islower(str[i]))
+			str[i] -= 32;
+}
 
-    {
 
-        cout<<"List is empty, nothing to sort"<<endl;
+int main()
+{
+	String a = "Hello", b = " World", c;
+	
+	/*Testing Functions*/
 
-        return;
+	/*Hello World*/
+	c = a + b;
+	c.show();
+        
+	/*HELLO*/
+	a.toupper();
+	a.show();
+	
+	/*hello*/
+	a.tolower();
+	a.show();
+	
+	/* World */
+	a=b;
+	a.show();
+	
+	/*5*/
+	cout << a.stringlen() << endl;
+       
+        /*6*/
+	cout << a.stringsize() << endl;
 
-    }
+        /*Hello World World*/
+	a += b;
+	a.show();
 
-    s = last->next;
 
-    while (s != last)
-
-    {
-
-        ptr = s->next;
-
-        while (ptr != last->next)
-
-        {
-
-            if (ptr != last->next)
-
-            {
-
-                if (s->info > ptr->info)
-
-                {
-
-                    temp = s->info;
-
-                    s->info = ptr->info;
-
-                    ptr->info = temp;
-
-                }
-
-            }
-
-            else
-
-            {
-
-                break;
-
-            }
-
-            ptr = ptr->next;
-
-        }
-
-        s = s->next;
-
-    }
-
+	_getch();
+	return 0;
 }
 
