@@ -1,7 +1,6 @@
  * /Search element in the list
 
- */
-
+ 
 void circular_llist::search_element(int value)
 
 {
