@@ -95,6 +95,129 @@ int main()
         cout<<"Enter your choice : ";
 
         cin>>choice;
+        switch(choice)
+
+        {
+
+        case 1:
+
+            cout<<"Enter the element: ";
+
+            cin>>element;
+
+            cl.create_node(element);
+
+            cout<<endl;
+
+            break;
+
+        case 2:
+
+            cout<<"Enter the element: ";
+
+            cin>>element;
+
+            cl.add_begin(element);
+
+            cout<<endl;
+
+            break;
+
+        case 3:
+
+            cout<<"Enter the element: ";
+
+            cin>>element;
+
+            cout<<"Insert element after position: ";
+
+            cin>>position;
+
+            cl.add_after(element, position);
+
+            cout<<endl;
+
+            break;
+
+        case 4:
+
+            if (last == NULL)
+
+            {
+
+                cout<<"List is empty, nothing to delete"<<endl;
+
+                break;
+
+            }
+
+            cout<<"Enter the element for deletion: ";
+
+            cin>>element;
+
+            cl.delete_element(element);
+
+            cout<<endl;
+
+            break;
+
+        case 5:
+
+            if (last == NULL)
+
+            {
+
+                cout<<"List Empty!! Can't search"<<endl;
+
+                break;
+
+            }
+
+            cout<<"Enter the element to be searched: ";
+
+            cin>>element;
+
+            cl.search_element(element);
+
+            cout<<endl;
+
+            break;
+
+        case 6:
+
+            cl.display_list();
+
+            break;
+
+        case 7:
+
+            cl.update();
+
+            break;
+
+        case 8:
+
+            cl.sort();
+
+            break;
+
+        case 9:
+
+            exit(1);
+
+            break;
+
+        default:
+
+            cout<<"Wrong choice"<<endl;
+
+        }
+
+    }
+
+    return 0;
+
+}
       void circular_llist::create_node(int value)
 
 {
