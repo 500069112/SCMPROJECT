@@ -501,4 +501,70 @@ void circular_llist::add_after(int value, int pos)
     cout<<"Element "<<value<<" not found in the list"<<endl;
 
 }
+ 
+void circular_llist::sort()
+
+{
+
+    struct node *s, *ptr;
+
+    int temp;
+
+    if (last == NULL)
+
+    {
+
+        cout<<"List is empty, nothing to sort"<<endl;
+
+        return;
+
+    }
+
+    s = last->next;
+
+    while (s != last)
+
+    {
+
+        ptr = s->next;
+
+        while (ptr != last->next)
+
+        {
+
+            if (ptr != last->next)
+
+            {
+
+                if (s->info > ptr->info)
+
+                {
+
+                    temp = s->info;
+
+                    s->info = ptr->info;
+
+                    ptr->info = temp;
+
+                }
+
+            }
+
+            else
+
+            {
+
+                break;
+
+            }
+
+            ptr = ptr->next;
+
+        }
+
+        s = s->next;
+
+    }
+
+}
 
